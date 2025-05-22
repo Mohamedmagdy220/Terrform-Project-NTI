@@ -108,7 +108,8 @@ Run these commands from the repo root:
 - internal_alb_dns_name    DNS name of internal Application Load Balancer
 
 
-############ Contributing ###############
+## Contributing 
+
 - Fork this repository
 
 - Create a feature branch: git checkout -b feature/<feature-name>
