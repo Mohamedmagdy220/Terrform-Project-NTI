@@ -1,3 +1,5 @@
 .terraform/
 my-terr-key.pem
 terraform.tfvars
+.terraform.lock.hcl
+server_ips.txt
