@@ -120,7 +120,7 @@ resource "aws_instance" "backend" {
     </head>
     <body>
     <header>
-        <h1>Hello To MY NTI Profile </h1>
+        <h1>Welcome To MY NTI Profile </h1>
         <h2>Mohamed Magdy</h2>
     </header>
     <nav>
