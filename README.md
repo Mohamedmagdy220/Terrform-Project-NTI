@@ -42,19 +42,8 @@ Everything is built using reusable Terraform modules to ensure consistency, main
 
 ## Architecture Diagram
 
-.
-├── modules             /
-│ ├── vpc               / ← Creates VPC + Internet Gateway + NAT Gateways
-│ ├── subnet           / ← Public & private subnets per AZ
-│ ├── security_group   / ← SGs for bastion, backends, ELBs
-│ ├── ec2              / ← Launch bastion & backend servers
-│ ├── elb              / ← Internet-facing Classic ELB
-│ └── internal-alb     / ← Internal Application Load Balancer
-├── main.tf              ← Root module wiring everything together
-├── variables.tf         ← All input variable definitions
-├── outputs.tf           ← Exported outputs (IDs, DNS names)
-├── backend.tf           ← Remote state configuration
-└── terraform.tfvars     ← Your environment-specific values
+
+![ChatGPT Image May 22, 2025, 01_23_11 PM](https://github.com/user-attachments/assets/e373beb7-d4bc-45d1-8d09-a93470a7ac2f)
 
 ---
 
@@ -81,51 +70,51 @@ Configure remote state in backend.tf
 
 Run these commands from the repo root:
 
-1- terraform init
-2- terraform validate
-3- terraform plan
-4- terraform apply
+- terraform init
+- terraform validate
+- terraform plan
+- terraform apply
 
 
 ##  Modules Breakdown
 
-Module	                           Purpose
-vpc	                  Creates VPC, IGW, NAT Gateways, route tables
-subnet	              Provisions public & private subnets across AZs
-security_group	      Defines security rules for bastion, backends, ELBs
-ec2	                  Launches bastion and backend instances with user data
-elb	                  Sets up an external Classic ELB for public access
-internal-alb	        Chooses an internal ALB for routing to private backends
+- Module	                           Purpose
+- vpc	                  Creates VPC, IGW, NAT Gateways, route tables
+- subnet	              Provisions public & private subnets across AZs
+- security_group	      Defines security rules for bastion, backends, ELBs
+- ec2	                  Launches bastion and backend instances with user data
+- elb	                  Sets up an external Classic ELB for public access
+- internal-alb	        Chooses an internal ALB for routing to private backends
 
 
 ## Inputs & Outputs
 ## Inputs
 
-Name	                            Description	                           Type	              Required
-project_name	            Prefix/tag for all resources	                string	               yes
-environment	              Deployment environment (dev, prod)	          string	               yes
-vpc_cidr	                CIDR block for VPC	                          string	               yes
-public_subnet_cidrs	      List of public subnet CIDRs per AZ	           list	                 yes
-private_subnet_cidrs	    List of private subnet CIDRs per AZ	           list	                 yes
+- Name	                            Description	                           Type	              Required
+- project_name	            Prefix/tag for all resources	                string	               yes
+- environment	              Deployment environment (dev, prod)	          string	               yes
+- vpc_cidr	                CIDR block for VPC	                          string	               yes
+- public_subnet_cidrs	      List of public subnet CIDRs per AZ	           list	                 yes
+- private_subnet_cidrs	    List of private subnet CIDRs per AZ	           list	                 yes
 
 ## Outputs
 
-Name                          	Description
-vpc_id	                 The ID of the created VPC
-public_subnet_ids	       List of public subnet IDs
-private_subnet_ids	     List of private subnet IDs
-bastion_public_ips	     Public IP addresses of bastion hosts
-elb_dns_name	           DNS name of Internet-facing ELB
-internal_alb_dns_name    DNS name of internal Application Load Balancer
+- Name                          	Description
+- vpc_id	                 The ID of the created VPC
+- public_subnet_ids	       List of public subnet IDs
+- private_subnet_ids	     List of private subnet IDs
+- bastion_public_ips	     Public IP addresses of bastion hosts
+- elb_dns_name	           DNS name of Internet-facing ELB
+- internal_alb_dns_name    DNS name of internal Application Load Balancer
 
 
 ############ Contributing ###############
-1-> Fork this repository
+- Fork this repository
 
-2-> Create a feature branch: git checkout -b feature/<feature-name>
+- Create a feature branch: git checkout -b feature/<feature-name>
 
-3-> Commit your changes: git commit -m "Add <feature>"
+- Commit your changes: git commit -m "Add <feature>"
 
-4-> Push: git push origin feature/<feature-name>
+- Push: git push origin feature/<feature-name>
 
-5-> Open a Pull Request and tag a reviewer
+- Open a Pull Request and tag a reviewer
