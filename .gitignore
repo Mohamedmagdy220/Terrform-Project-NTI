@@ -1,1 +1,3 @@
 .terraform/
+my-terr-key.pem
+terraform.tfvars
